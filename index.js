@@ -1,4 +1,7 @@
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-extra");
+const chrome = require("chrome-aws-lambda");
+const StealthPlugin = require("puppeteer-extra-plugin-stealth");
+puppeteer.use(StealthPlugin());
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -24,6 +27,8 @@ app.get("/", async (req, res) => {
 		}
 		const { url } = req.query;
 		const browser = await puppeteer.launch({
+			args: chrome.args,
+			executablePath: "/usr/bin/chromium-browser",
 			headless: true,
 		});
 		const page = await browser.newPage();
