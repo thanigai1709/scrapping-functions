@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(
@@ -39,4 +39,4 @@ app.get("/", async (req, res) => {
 	}
 });
 
-app.listen(3001, () => console.log("Server started on port 3001"));
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
