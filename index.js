@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
 	cors({
-		origin: "http://localhost:3000",
+		origin: "*",
 	})
 );
 
@@ -15,13 +15,19 @@ app.use(bodyParser.json());
 
 app.get("/", async (req, res) => {
 	try {
+		if (req.method !== "GET") {
+			res.status(405).send({ message: "Only GET requests allowed" });
+			return;
+		}
 		if (!req.query.url) {
 			res.status(400).send({ message: "Invalid request format" });
 			return;
 		}
 		const { url } = req.query;
 		const browser = await puppeteer.launch({
-			headless: true,
+			args: chrome.args,
+			executablePath: (await chrome.executablePath) || "/usr/bin/google-chrome-stable",
+			headless: chrome.headless,
 		});
 		const page = await browser.newPage();
 		await page.goto(String(url));
