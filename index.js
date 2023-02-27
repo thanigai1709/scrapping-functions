@@ -26,7 +26,7 @@ app.get("/", async (req, res) => {
 		const { url } = req.query;
 		const browser = await puppeteer.launch({
 			args: chrome.args,
-			executablePath: (await chrome.executablePath) || "/usr/bin/google-chrome-stable",
+			executablePath: "/usr/bin/chromium-browser",
 			headless: true,
 		});
 		const page = await browser.newPage();
