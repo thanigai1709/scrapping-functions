@@ -1,4 +1,5 @@
-const puppeteer = require("puppeteer");
+const puppeteer = require("puppeteer-core");
+const chrome = require("chrome-aws-lambda");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -12,7 +13,6 @@ app.use(
 );
 
 app.use(bodyParser.json());
-
 app.get("/", async (req, res) => {
 	try {
 		if (req.method !== "GET") {
