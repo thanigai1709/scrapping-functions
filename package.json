@@ -1,0 +1,35 @@
+{
+  "name": "scrapping-functions",
+  "version": "1.0.0",
+  "description": "webscrapping function using pupateer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js",
+    "dev":"nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thanigai1709/scrapping-functions.git"
+  },
+  "keywords": [
+    "web",
+    "scrapping"
+  ],
+  "author": "thanigai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thanigai1709/scrapping-functions/issues"
+  },
+  "homepage": "https://github.com/thanigai1709/scrapping-functions#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "puppeteer": "^19.7.2",
+    "puppeteer-extra": "^3.3.4",
+    "puppeteer-extra-plugin-stealth": "^2.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
