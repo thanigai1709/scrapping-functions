@@ -3,7 +3,7 @@ const chrome = require("chrome-aws-lambda");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8000;
 const app = express();
 
 app.use(
@@ -27,7 +27,7 @@ app.get("/", async (req, res) => {
 		const browser = await puppeteer.launch({
 			args: chrome.args,
 			executablePath: (await chrome.executablePath) || "/usr/bin/google-chrome-stable",
-			headless: chrome.headless,
+			headless: false,
 		});
 		const page = await browser.newPage();
 		await page.goto(String(url));
