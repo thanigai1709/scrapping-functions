@@ -1,5 +1,4 @@
-const puppeteer = require("puppeteer-core");
-const chrome = require("chrome-aws-lambda");
+const puppeteer = require("puppeteer");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -25,8 +24,6 @@ app.get("/", async (req, res) => {
 		}
 		const { url } = req.query;
 		const browser = await puppeteer.launch({
-			args: chrome.args,
-			executablePath: "/usr/bin/chromium-browser",
 			headless: true,
 		});
 		const page = await browser.newPage();
